@@ -2,7 +2,6 @@ package Prog3.Clase;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
-import java.awt.event.ActionListener;
 import java.io.Serial;
 import java.time.LocalDate;
 import java.util.ArrayList;
