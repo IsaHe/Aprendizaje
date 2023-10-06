@@ -1,15 +1,49 @@
 package Prog3.Clase;
 
 import javax.swing.*;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import java.io.Serial;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class EjemploJTable extends JFrame {
 
     @Serial
     private static final long serialVersionUID = 1L;
+
+    static class MyTableModel extends AbstractTableModel {
+        @Serial
+        private static final long serialVersionUID = 1L;
+
+        private final List<Person> persons;
+        private final String[] columnNames = {"Nombre", "Apellido", "Fecha de nacimiento"};
+
+        public MyTableModel(List<Person> persons) {
+            this.persons = persons;
+        }
+
+        @Override
+        public int getRowCount() {
+            return persons.size();
+        }
+
+        @Override
+        public int getColumnCount() {
+            return columnNames.length;
+        }
+
+        @Override
+        public Object getValueAt(int row, int column) {
+            return "---";
+        }
+
+        @Override
+        public String getColumnName(int column) {
+            return columnNames[column];
+        }
+    }
 
     public EjemploJTable() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -56,14 +90,17 @@ public class EjemploJTable extends JFrame {
         persons.add(new Person("Hipparchus", "of Nicaea", LocalDate.of(-190, 1, 1)));
         /////////////////////////////////////////////////////////////////////////////////
 
-        DefaultTableModel tableModel = new DefaultTableModel();
-        tableModel.addColumn("Nombre");
-        tableModel.addColumn("Apellido");
-        tableModel.addColumn("Fecha de nacimiento");
+//        DefaultTableModel tableModel = new DefaultTableModel();
+//        tableModel.addColumn("Nombre");
+//        tableModel.addColumn("Apellido");
+//        tableModel.addColumn("Fecha de nacimiento");
+//
+//        for (Person person : persons) {
+//            tableModel.addRow(new Object[]{person.getName(), person.getSurname(), person.getBirthDate()});
+//        }
 
-        for (Person person : persons) {
-            tableModel.addRow(new Object[]{person.getName(), person.getSurname(), person.getBirthDate()});
-        }
+
+        MyTableModel tableModel = new MyTableModel(persons);
 
         JTable table = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(table);
