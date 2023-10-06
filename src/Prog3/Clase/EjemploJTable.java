@@ -2,7 +2,6 @@ package Prog3.Clase;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.DefaultTableModel;
 import java.io.Serial;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -36,7 +35,13 @@ public class EjemploJTable extends JFrame {
 
         @Override
         public Object getValueAt(int row, int column) {
-            return "---";
+            Person person = persons.get(row);
+            return switch (column) {
+                case 0 -> person.getName();
+                case 1 -> person.getSurname();
+                case 2 -> person.getBirthDate();
+                default -> null;
+            };
         }
 
         @Override
@@ -54,7 +59,7 @@ public class EjemploJTable extends JFrame {
         ArrayList<Person> persons = new ArrayList<>();
         persons.add(new Person("Enrico", "Fermi", LocalDate.of(1901, 9, 29)));
         persons.add(new Person("Albert", "Einstein", LocalDate.of(1879, 4, 14)));
-        persons.add(new Person("Marie", "Curie", LocalDate.of(1867, 11, 07)));
+        persons.add(new Person("Marie", "Curie", LocalDate.of(1867, 11, 7)));
         persons.add(new Person("Nikola", "Tesla", LocalDate.of(1856, 7, 10)));
         persons.add(new Person("Isaac", "Newton", LocalDate.of(1643, 1, 4)));
         persons.add(new Person("Galileo", "Galilei", LocalDate.of(1564, 2, 15)));
