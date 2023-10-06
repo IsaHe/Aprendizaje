@@ -2,6 +2,7 @@ package Prog3.Clase;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
+import java.awt.event.ActionListener;
 import java.io.Serial;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -69,7 +70,7 @@ public class EjemploJTable extends JFrame {
         setSize(640, 480);
         setTitle("Ejemplo JTable");
 
-        /////////////////////////////////////////////////////////////////////////////////
+        // Data set
         ArrayList<Person> persons = new ArrayList<>();
         persons.add(new Person("Enrico", "Fermi", LocalDate.of(1901, 9, 29)));
         persons.add(new Person("Albert", "Einstein", LocalDate.of(1879, 4, 14)));
@@ -107,7 +108,6 @@ public class EjemploJTable extends JFrame {
         persons.add(new Person("Heron", "of Alexandria", LocalDate.of(10, 1, 1)));
         persons.add(new Person("Apollonius", "of Perga", LocalDate.of(-262, 1, 1)));
         persons.add(new Person("Hipparchus", "of Nicaea", LocalDate.of(-190, 1, 1)));
-        /////////////////////////////////////////////////////////////////////////////////
 
 //        DefaultTableModel tableModel = new DefaultTableModel();
 //        tableModel.addColumn("Nombre");
@@ -124,13 +124,11 @@ public class EjemploJTable extends JFrame {
         JTable table = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane);
+        JPanel panelAbajo = new JPanel();
+        add(panelAbajo, "South");
 
         // boton que imprime los datos de la fila seleccionada
         JButton button = new JButton("Imprimir Datos");
-        JPanel panelAbajo = new JPanel();
-        panelAbajo.add(button);
-        add(panelAbajo, "South");
-
         button.addActionListener(e -> {
             int row = table.getSelectedRow();
             if (row != -1) {
@@ -139,6 +137,7 @@ public class EjemploJTable extends JFrame {
                 System.out.println("Fecha de nacimiento: " + tableModel.getValueAt(row, 2));
             }
         });
+        panelAbajo.add(button);
 
         setVisible(true);
     }
