@@ -48,6 +48,20 @@ public class EjemploJTable extends JFrame {
         public String getColumnName(int column) {
             return columnNames[column];
         }
+
+        @Override
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+            return true;
+        }
+
+        @Override
+        public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+            switch (columnIndex) {
+                case 0 -> persons.get(rowIndex).setName((String) aValue);
+                case 1 -> persons.get(rowIndex).setSurname((String) aValue);
+                case 2 -> persons.get(rowIndex).setBirthdate((LocalDate) aValue);
+            }
+        }
     }
 
     public EjemploJTable() {
