@@ -29,7 +29,7 @@ public class audio {
                     break;
                 case("S"): clip.stop();
                     break;
-                case("R"): clip.setMicrosecondPosition(0);;
+                case("R"): clip.setMicrosecondPosition(0);
                 break;
                 case("Q"): clip.close();
                     break;

@@ -1,3 +1,5 @@
+package JavaLearning;
+
 import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -18,7 +20,7 @@ public class TimeTaskManager {
                 }
                 else{
                     System.out.println("Happy New Year");
-                    timer.cancel();;
+                    timer.cancel();
                 }
             }
             
