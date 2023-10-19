@@ -11,7 +11,7 @@ public class Ejercicio01Test {
     @Test
     public void testOrdenarPalabras() {
         List<String> palabras = Arrays.asList("historia", "caricatura", "empatar", "zapato", "cueva");
-        palabras = Ejercicio01.ordenarPalabras(palabras);
+        Ejercicio01.ordenarPalabras(palabras);
         assertEquals("caricatura", palabras.get(0));
         assertEquals("cueva", palabras.get(1));
         assertEquals("empatar", palabras.get(2));
