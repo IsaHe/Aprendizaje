@@ -35,4 +35,10 @@ public class Producto {
         return entrega;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Producto)
+            return ((Producto) obj).getId() == id;
+        return false;
+    }
 }
