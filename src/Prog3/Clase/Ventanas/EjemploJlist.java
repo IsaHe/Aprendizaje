@@ -1,4 +1,4 @@
-package Prog3.Clase;
+package Prog3.Clase.Ventanas;
 
 import javax.swing.*;
 import java.io.Serial;

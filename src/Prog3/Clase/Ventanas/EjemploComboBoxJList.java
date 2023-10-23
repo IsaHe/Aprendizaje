@@ -1,4 +1,4 @@
-package Prog3.Clase;
+package Prog3.Clase.Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.event.ItemEvent;

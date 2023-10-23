@@ -1,4 +1,4 @@
-package Prog3.Clase;
+package Prog3.Clase.Ventanas;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -7,10 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
-import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.event.ActionEvent;
 
 /**
  * Este ejmplo muestra el uso de distintos métodos comunes
