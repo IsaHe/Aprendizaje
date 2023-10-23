@@ -4,11 +4,11 @@ public class FrameTester {
     public static void main(String[] args) {
         //new textFrame();
 
-        //new CheckFrame();
+//        new CheckFrame();
 
-        //new RadioFrame();
+        new RadioFrame();
 
-        new comboBoxFrame();
+        //new comboBoxFrame();
 
         //new SliderDemo();
         

@@ -7,6 +7,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.DefaultListModel;
 import javax.swing.ListSelectionModel;
 import java.awt.BorderLayout;
+import java.io.Serial;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collection;
@@ -20,16 +21,18 @@ public class EjemploModeloJList extends JFrame {
     /**
      *
      */
+    @Serial
     private static final long serialVersionUID = 1L;
 
     // este modelo de lista proporciona un método
     // addAll para añadir una lista de personas directamente
     // DefaultListModel no contiene este método en Java 8
-    class MyListModel extends DefaultListModel<Person> {
+    static class MyListModel extends DefaultListModel<Person> {
 
         /**
          *
          */
+        @Serial
         private static final long serialVersionUID = 1L;
 
         public MyListModel(Collection<Person> persons) {
@@ -52,7 +55,7 @@ public class EjemploModeloJList extends JFrame {
         Person[] persons = { 
             new Person("Enrico", "Fermi", LocalDate.of(1901, 9, 29)), 
             new Person("Albert", "Einstein", LocalDate.of(1879, 4, 14)),
-            new Person("Marie", "Curie", LocalDate.of(1867, 11, 07))
+            new Person("Marie", "Curie", LocalDate.of(1867, 11, 7))
         };
 
         // se utiliza el nuevo model implementado que admite los datos
@@ -71,13 +74,6 @@ public class EjemploModeloJList extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-
-            @Override
-            public void run() {
-                new EjemploModeloJList();
-            }
-
-        });
+        SwingUtilities.invokeLater(EjemploModeloJList::new);
     }
 }
