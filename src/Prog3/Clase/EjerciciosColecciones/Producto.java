@@ -41,4 +41,9 @@ public class Producto {
             return ((Producto) obj).getId() == id;
         return false;
     }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(id);
+    }
 }
