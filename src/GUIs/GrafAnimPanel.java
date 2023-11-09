@@ -14,10 +14,10 @@ public class GrafAnimPanel extends JPanel implements ActionListener {
     final int PANNEL_HEIGHT = 500;
     Image enemy;
     Timer timer;
-    int xVelocity = random.nextInt(0, 5);
-    int yVelocity = random.nextInt(0, 5);
-    int xInicial = 0;
-    int yInicial = 0;
+    int xVelocity = 1;
+    int yVelocity = 2;
+    int xInicial = PANNEL_WIDTH/2;
+    int yInicial = PANNEL_HEIGHT/2;
 
     GrafAnimPanel() {
 
@@ -41,12 +41,16 @@ public class GrafAnimPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (xInicial >= PANNEL_WIDTH-enemy.getWidth(null) || xInicial < 0) {
+
+        xVelocity += 1;
+        yVelocity += 1;
+
+        if (xInicial >= PANNEL_WIDTH-enemy.getWidth(null) || xInicial < PANNEL_WIDTH/2-enemy.getWidth(null)) {
             xVelocity *= -1;
         }
         xInicial += xVelocity;
 
-        if (yInicial >= PANNEL_HEIGHT-enemy.getHeight(null) || yInicial < 0) {
+        if (yInicial >= PANNEL_HEIGHT-enemy.getHeight(null) || yInicial < PANNEL_HEIGHT/2-enemy.getHeight(null)) {
             yVelocity *= -1;
         }
         yInicial += yVelocity;

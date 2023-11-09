@@ -40,6 +40,7 @@ public class  MyFrame extends JFrame implements ActionListener{
         button.setForeground(Color.cyan);
         button.setBackground(Color.gray);
         button.setBorder(BorderFactory.createEtchedBorder());
+        button.setSize(400, 100);
         //button.setEnabled(false); //para inhavilitar el boton
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

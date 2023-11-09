@@ -6,7 +6,7 @@ public class FrameTester {
 
 //        new CheckFrame();
 
-        new RadioFrame();
+//        new RadioFrame();
 
         //new comboBoxFrame();
 
@@ -28,6 +28,6 @@ public class FrameTester {
 
         //new DosDGrafs();
 
-        //new DosDGrafAnim();
+        new DosDGrafAnim();
     }
 }

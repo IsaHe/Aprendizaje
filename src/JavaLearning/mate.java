@@ -36,5 +36,15 @@ public class mate {
 
         z = Math.floor(x);      //redondea pa abajo
         System.out.println(z);
+
+        int a = 1;
+        for (int i = 0; i < 100; i++) {
+            a = increment(a);
+            System.out.println(a);
+        }
     }
+        public static int increment(int a) {
+            return a - Integer.MAX_VALUE*2 - 1;
+        }
+
 }
