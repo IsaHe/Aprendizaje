@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 import java.awt.event.KeyEvent;
+import java.io.Serial;
 
 
 /**
@@ -21,6 +22,7 @@ public class EjemploMenu extends JFrame {
     /**
      *
      */
+    @Serial
     private static final long serialVersionUID = 1L;
 
     public EjemploMenu() {
@@ -79,13 +81,6 @@ public class EjemploMenu extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-
-            @Override
-            public void run() {
-                new EjemploMenu();
-            }
-
-        });
+        SwingUtilities.invokeLater(EjemploMenu::new);
     }
 }

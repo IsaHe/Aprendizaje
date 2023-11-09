@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.io.Serial;
 
 /**
  * Este ejmplo muestra el uso de distintos métodos comunes
@@ -19,6 +20,7 @@ public class MetodosComunesComponente extends JFrame {
     /**
      *
      */
+    @Serial
     private static final long serialVersionUID = 1L;
 
     public MetodosComunesComponente() {

@@ -11,6 +11,8 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 import java.io.File;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.io.Serial;
+import java.util.Objects;
 
 /**
  * Este ejemplo muestra el uso del componente JTree.
@@ -24,6 +26,7 @@ public class EjemploJTree extends JFrame {
     /**
      *
      */
+    @Serial
     private static final long serialVersionUID = 1L;
 
     public EjemploJTree() {
@@ -36,8 +39,8 @@ public class EjemploJTree extends JFrame {
 
         // renderer utilizado para los iconos de los nodos
         // intermedios (directorios) y de los nodos hoja (ficheros)
-        ImageIcon directoryIcon = new ImageIcon(getClass().getResource("/coffee-icon-16.png"));
-        ImageIcon fileIcon = new ImageIcon(getClass().getResource("/pingus-icon-16.png"));
+        ImageIcon directoryIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/coffee-icon-16.png")));
+        ImageIcon fileIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/pingus-icon-16.png")));
         DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
         renderer.setLeafIcon(fileIcon);
         renderer.setOpenIcon(directoryIcon);
@@ -53,11 +56,12 @@ public class EjemploJTree extends JFrame {
         add(scrollPane, BorderLayout.CENTER);
         
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
     private void processDir(DefaultMutableTreeNode node, File dir) {
-        for (File file : dir.listFiles()) {
+        for (File file : Objects.requireNonNull(dir.listFiles())) {
             DefaultMutableTreeNode child = new DefaultMutableTreeNode(file.toString());
             node.add(child);
             if (file.isDirectory())
@@ -72,13 +76,6 @@ public class EjemploJTree extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-
-            @Override
-            public void run() {
-                new EjemploJTree();
-            }
-
-        });
+        SwingUtilities.invokeLater(EjemploJTree::new);
     }
 }
