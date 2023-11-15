@@ -12,9 +12,11 @@ import javax.swing.ListSelectionModel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.io.Serial;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Objects;
 
 /**
  * Este ejemplo muestra cómo se crea un renderer
@@ -25,16 +27,18 @@ public class EjemploRendererJList extends JFrame {
     /**
      *
      */
+    @Serial
     private static final long serialVersionUID = 1L;
 
     // este modelo de lista proporciona un método
     // addAll para añadir una lista de personas directamente
     // DefaultListModel no contiene este método en Java 8
-    class MyListModel extends DefaultListModel<Person> {
+    static class MyListModel extends DefaultListModel<Person> {
 
         /**
          *
          */
+        @Serial
         private static final long serialVersionUID = 1L;
 
         public MyListModel(Collection<Person> persons) {
@@ -52,21 +56,22 @@ public class EjemploRendererJList extends JFrame {
     // Esta clase define el renderer para los elementos visuales de la tabla
     // El renderer debe implementar la interfaz ListCellRender.
     // En este caso se extiende un JLabel como componente a visualizar
-    class MyCellRenderer extends JLabel implements ListCellRenderer<Person> {
+    static class MyCellRenderer extends JLabel implements ListCellRenderer<Person> {
 
         /**
          *
          */
+        @Serial
         private static final long serialVersionUID = 1L;
-        private ImageIcon selectedIcon;
-        private ImageIcon unselectedIcon;
+        private final ImageIcon selectedIcon;
+        private final ImageIcon unselectedIcon;
 
-        private Color defaultBackground;
+        private final Color defaultBackground;
 
         // constructor del renderer que carga los iconos a utilizar
         public MyCellRenderer() {
-            selectedIcon = new ImageIcon(getClass().getResource("/es/deusto/prog3/cap06/res/coffee-icon.png"));
-            unselectedIcon = new ImageIcon(getClass().getResource("/es/deusto/prog3/cap06/res/pingus-icon.png"));
+            selectedIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/coffee-icon.png")));
+            unselectedIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/pingus-icon.png")));
 
             // el JLabel se configura para que sea opaco y se pueda ver
             // el color de selección
@@ -133,13 +138,6 @@ public class EjemploRendererJList extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-
-            @Override
-            public void run() {
-                new EjemploRendererJList();
-            }
-
-        });
+        SwingUtilities.invokeLater(EjemploRendererJList::new);
     }
 }

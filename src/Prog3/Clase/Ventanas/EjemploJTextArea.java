@@ -34,14 +34,9 @@ public class EjemploJTextArea extends JFrame {
         add(scrollPane, BorderLayout.CENTER);
 
         JButton printButton = new JButton("Imprimir texto seleccionado");
-        printButton.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                String selectedText = textArea.getSelectedText();
-                System.out.println(selectedText);
-            }
-
+        printButton.addActionListener(arg0 -> {
+            String selectedText = textArea.getSelectedText();
+            System.out.println(selectedText);
         });
 
         add(printButton, BorderLayout.SOUTH);
@@ -51,13 +46,6 @@ public class EjemploJTextArea extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-
-            @Override
-            public void run() {
-                new EjemploJTextArea();
-            }
-
-        });
+        SwingUtilities.invokeLater(EjemploJTextArea::new);
     }
 }

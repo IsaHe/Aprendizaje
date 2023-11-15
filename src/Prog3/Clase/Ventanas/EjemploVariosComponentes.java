@@ -12,6 +12,7 @@ import javax.swing.SpinnerModel;
 import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
+import java.io.Serial;
 
 /**
  * Este ejemplo muestra el uso de distintos componentes
@@ -21,6 +22,7 @@ public class EjemploVariosComponentes extends JFrame {
     /**
      *
      */
+    @Serial
     private static final long serialVersionUID = 1L;
 
     public EjemploVariosComponentes() {
@@ -46,45 +48,28 @@ public class EjemploVariosComponentes extends JFrame {
         progressBar.setStringPainted(true); // muestra el número y porcentaje
 
         JButton startButton = new JButton("Iniciar thread");
-        startButton.addActionListener(new ActionListener() {
+        startButton.addActionListener(arg0 -> {
+            Thread t = new Thread(() -> {
+                startButton.setEnabled(false);
 
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                Thread t = new Thread(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        startButton.setEnabled(false);
-
-                        for (int i = 0; i <= 100; i++) {
-                            try {
-                                Thread.sleep(100);
-                            } catch (InterruptedException e) {
-                                //
-                            }
-
-                            final int value = i;
-                            // actualizar la barra de progreso
-                            // cuidado se accede a Swing desde otro thread
-                            // hay que usar SwingUtilities
-                            SwingUtilities.invokeLater(new Runnable() {
-
-                                @Override
-                                public void run() {
-                                    progressBar.setValue(value);
-                                }
-
-                            });
-                        }
-
-                        startButton.setEnabled(true);
+                for (int i = 0; i <= 100; i++) {
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        //
                     }
 
-               });
+                    final int value = i;
+                    // actualizar la barra de progreso
+                    // cuidado se accede a Swing desde otro thread
+                    // hay que usar SwingUtilities
+                    SwingUtilities.invokeLater(() -> progressBar.setValue(value));
+                }
 
-               t.start();
-            }
+                startButton.setEnabled(true);
+            });
 
+           t.start();
         });
 
         JPanel centerPanel = new JPanel();

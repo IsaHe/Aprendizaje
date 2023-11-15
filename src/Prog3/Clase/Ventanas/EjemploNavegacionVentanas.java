@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.Serial;
 
 /**
  * Este ejemplo muestra la navegación entre ventanas. La ventana inicial crea
@@ -23,6 +24,7 @@ public class EjemploNavegacionVentanas extends JFrame {
     /**
      *
      */
+    @Serial
     private static final long serialVersionUID = 1L;
 
     // Clase interna usada en el ejemplo para mostrar la
@@ -30,14 +32,14 @@ public class EjemploNavegacionVentanas extends JFrame {
     // La clase recibe en el constructor la referencia a
     // la ventana anterior para poder volver a mostrar al
     // cerrarse
-    class AnotherWindow extends JFrame implements WindowListener {
+    static class AnotherWindow extends JFrame implements WindowListener {
 
         /**
          *
          */
         private static final long serialVersionUID = 1L;
 
-        private JFrame previous;
+        private final JFrame previous;
 
         public AnotherWindow(JFrame previous) {
             setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -89,18 +91,13 @@ public class EjemploNavegacionVentanas extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         JButton showButton = new JButton("Mostrar otra ventana");
 
-        showButton.addActionListener(new ActionListener() {
+        showButton.addActionListener(arg0 -> {
+            // se hace invisible la ventana actual
+            setVisible(false);
 
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                // se hace invisible la ventana actual
-                setVisible(false);
-
-                // se crea la segunda ventana
-                // pasando la referencia a la actual
-                new AnotherWindow(EjemploNavegacionVentanas.this);
-            }
-            
+            // se crea la segunda ventana
+            // pasando la referencia a la actual
+            new AnotherWindow(EjemploNavegacionVentanas.this);
         });
         
         JPanel mainPanel = new JPanel();
@@ -113,13 +110,6 @@ public class EjemploNavegacionVentanas extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				new EjemploNavegacionVentanas();
-			}
-
-        });
+        SwingUtilities.invokeLater(EjemploNavegacionVentanas::new);
     }
 }
