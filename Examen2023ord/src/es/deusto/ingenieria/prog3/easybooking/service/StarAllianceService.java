@@ -61,6 +61,7 @@ public class StarAllianceService extends AirAllianceService {
 	public Map<String, Flight> loadFlights() {		
 		//Se establece la conexión con la BBDD
 		connectDB();
+
 		//Se inicializa el mapa de vuelos
 		flights = new HashMap<>();
 				
