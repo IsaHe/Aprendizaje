@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Examen2023ext/Examen2023ext.iml" filepath="$PROJECT_DIR$/Examen2023ext/Examen2023ext.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Examen2023ord/Examen2023ord.iml" filepath="$PROJECT_DIR$/Examen2023ord/Examen2023ord.iml" />
       <module fileurl="file://$PROJECT_DIR$/JavaLearning.iml" filepath="$PROJECT_DIR$/JavaLearning.iml" />
     </modules>
   </component>

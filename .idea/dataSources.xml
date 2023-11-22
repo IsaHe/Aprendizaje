@@ -8,5 +8,17 @@
       <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/src/Prog3/Clase/BD/Usuario</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="STAR_ALLIANCE" uuid="19ef2874-91d5-44b1-b075-24a67ce13555">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\Thega\IdeaProjects\JavaLearning\Examen2023ord\resources\db\STAR_ALLIANCE.db</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+      <libraries>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.43.0/org/xerial/sqlite-jdbc/3.43.0.0/sqlite-jdbc-3.43.0.0.jar</url>
+        </library>
+      </libraries>
+    </data-source>
   </component>
 </project>

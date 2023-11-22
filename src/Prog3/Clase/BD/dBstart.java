@@ -1,9 +1,13 @@
 package Prog3.Clase.BD;
 
 import java.sql.*;
+import java.util.Random;
 
 public class dBstart {
     public static void main(String[] args) {
+
+        Random r = new Random();
+
         // Cargar el driver de la base de datos y conectarlo con JDBC
         try {
             Class.forName("org.sqlite.JDBC");
@@ -37,7 +41,7 @@ public class dBstart {
             // para hacerlo de manera que los datos se obtengan de fuera
             String nombre = "juan";
             String apellido = "ñiguez";
-            double cartera = 546848.7;
+            double cartera = r.nextDouble();
             String sql = "INSERT INTO usuario (nombre, apellido, cartera) VALUES ('" + nombre + "', '" + apellido + "', '" + cartera + "')";
             System.out.println(sql);
             statement.executeUpdate(sql);
@@ -46,7 +50,7 @@ public class dBstart {
             // De manera mejot se puede hacer de la siguiente manera y que sea mas seguro
             nombre = "antonio";
             apellido = "manzanares";
-            cartera = 1158.7;
+            cartera = r.nextDouble();
             PreparedStatement ps = conn.prepareStatement("INSERT INTO usuario (nombre, apellido, cartera) VALUES (?, ?, ?)");
             ps.setString(1, nombre);
             ps.setString(2, apellido);
