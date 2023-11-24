@@ -9,11 +9,20 @@ public class Bases {
         if (n == m) {
             System.out.println(n);
         } else {
-            contar(m, n - 1);
             System.out.println(n);
+            contar(m, n - 1);
+        }
+    }
+
+    public static int factorial(int n) {
+        if (n == 0) {
+            return 1;
+        } else {
+            return factorial(n-1) * n;
         }
     }
     public static void main(String[] args) {
         contar(0, 10);
+        System.out.println(factorial(5));
     }
 }
