@@ -21,8 +21,18 @@ public class Bases {
             return factorial(n-1) * n;
         }
     }
+
+    //Recursividad lineal
+    public static int maximoComunDivisor(int m, int n) {
+        if (m == n) return m;
+
+        if (m > n) return maximoComunDivisor(m - n, n);
+
+        return maximoComunDivisor(m, n - m);
+    }
     public static void main(String[] args) {
         contar(0, 10);
-        System.out.println(factorial(5));
+        System.out.println(factorial(25));
+        System.out.println(maximoComunDivisor(12, 8));
     }
 }
